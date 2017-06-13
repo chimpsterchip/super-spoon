@@ -9,7 +9,7 @@ class HeightGenerator;
 class CTerrain
 {
 public:
-	CTerrain(std::wstring HeightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light, HeightGenerator hGenerator);
+	CTerrain(std::wstring HeightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light, HeightGenerator* hGenerator);
 	~CTerrain();
 	
 	CLight* light;
@@ -23,8 +23,8 @@ public:
 	GLuint mNumVertices;
 	GLuint mNumFaces;
 
-	GLuint numRows = 513, numCols = 513;
-	GLfloat heightScale = 0.35f, heightOffset = 0.0f, cellSpacing = 1.0f;
+	GLuint numRows = 20, numCols = 20;
+	GLfloat heightScale = 0.35f, heightOffset = 0.0f, cellSpacing = 12.0f;
 	std::vector<float> heightmap;
 	std::vector<VertexFormat>vertices;
 	std::vector<GLuint>indices;
@@ -33,6 +33,7 @@ public:
 	GLuint vao, vbo, ebo, program, texture, texture1, texture2;
 
 	void loadHeightMap();
+	void generateHeightMap();
 	void smooth();
 	float average(UINT i, UINT j);
 	void createVerticesAndIndices();

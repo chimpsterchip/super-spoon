@@ -80,14 +80,15 @@ void GameScene::Init(HWND _name)
 
 	//Setup Light
 	MainLight = new CLight();
-	MainLight->SetColor(vec3(0.5f, 0.0f, 0.5f));
+	MainLight->SetColor(vec3(0.5f, 0.5f, 0.5f));
 	//Setup Light Model
 	CModel* newModel = new CModel(vec3(0.0f, 7.0f, 0.0f), 36, MainCamera);
 	newModel->init(CUBE, 0.5f, "Assets/textures/Green.png");
 	MainLight->SetModel(newModel);
 	
 	//Setup Terrain
-	m_pTerrain = new CTerrain(L"Assets/heightmap/terrain.raw", "Assets/heightmap/rock.jpg", "Assets/heightmap/grass.jpg", "Assets/heightmap/sand.jpg", TerrainProgram, MainCamera, MainLight);
+	hGenerator = new HeightGenerator();
+	m_pTerrain = new CTerrain(L"Assets/heightmap/terrain.raw", "Assets/heightmap/rock.jpg", "Assets/heightmap/grass.jpg", "Assets/heightmap/sand.jpg", TerrainProgram, MainCamera, MainLight, hGenerator);
 
 	//Setup Skybox
 	m_pSkybox = new Cubemap(SkyboxProgram, MainCamera);

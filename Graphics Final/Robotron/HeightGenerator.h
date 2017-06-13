@@ -8,13 +8,14 @@
 class HeightGenerator {
 public:
 	HeightGenerator();
+	float GetLerpNoise(float x, float z);
+	float GetNoise(int x, int z);
+	float GetSmoothNoise(int x, int z);
 
 private:
 	float GenerateHeight(int x, int z);
-	float GetNoise(int x, int z);
-	float GetSmoothNoise(int x, int z);
 	float Lerp(float a, float b, float blend);
-	float GetLerpNoise(float x, float z);
+	
 
 private:
 	std::vector<VertexFormat> verticesVector;

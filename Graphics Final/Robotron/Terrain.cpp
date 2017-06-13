@@ -6,7 +6,7 @@
 
 #include <fstream>
 
-CTerrain::CTerrain(std::wstring heightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light, HeightGenerator hGenerator){
+CTerrain::CTerrain(std::wstring heightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light, HeightGenerator* hGenerator){
 
 	this->heightmapFilename = heightmapFilename;
 	this->program = program;
@@ -62,6 +62,15 @@ void CTerrain::loadHeightMap(){
 
 }
 
+void CTerrain::generateHeightMap(){
+	// Copy the array data into a float array, and scale and offset the heights.
+	heightmap.resize(numRows * numCols, 0);
+
+	/*for (UINT i = 0; i < numRows * numCols; i++){
+		heightmap[i] = heightGenerator->GetLerpNoise()
+	}*/
+}
+
 void CTerrain::smooth(){
 
 	std::vector<float> dest(heightmap.size() + 1);
@@ -95,7 +104,7 @@ float CTerrain::average(UINT i, UINT j){
 
 	float avg = 0.0f;
 	float num = 0.0f;
-
+	
 	for (UINT m = i - 1; m <= i + 1; ++m){
 		for (UINT n = j - 1; n <= j + 1; ++n){
 			if (m >= 0 && i < numRows && n >= 0 && j < numCols){ // check if in bounds
@@ -125,7 +134,9 @@ void CTerrain::createVerticesAndIndices(){
 		{
 			float x = -halfWidth + j*cellSpacing;
 
-			float y = heightmap[i*numCols + j];
+			//float y = heightmap[i*numCols + j];
+			float y = heightGenerator->GetLerpNoise(x, z);
+			//printf("Generated noise: %f", y);
 			mvertices[i*numCols + j].pos = Position(x, y, z);
 			mvertices[i*numCols + j].normal = Normals(0.0f, 1.0f, 0.0f);
 			mvertices[i*numCols + j].texCoord = TexCoord(j*du, i*dv);

@@ -34,6 +34,7 @@
 #include "Light.h"
 #include "GeometryModel.h"
 #include "TessModel.h"
+#include "HeightGenerator.h"
 
 enum Sounds
 {
@@ -85,6 +86,7 @@ private:
 
 	CLight* MainLight;
 	Cubemap* m_pSkybox;
+	HeightGenerator* hGenerator;
 	CTerrain* m_pTerrain;
 	ReflectionModel* m_pSphere;
 	Model* m_p3DCastle;

@@ -7,6 +7,7 @@
 HeightGenerator::HeightGenerator()
 {
 	//create a random seed for height map on first creation of object
+	//this allows different terrain
 	srand(time(NULL));
 	seed = rand() % 1000000000;
 }
@@ -27,11 +28,12 @@ float HeightGenerator::GenerateHeight(int x, int z)
 float HeightGenerator::GetNoise(int x, int z)
 {
 	//seed needs to be the same whenever that vertex is called
-	srand(x + z + seed);
-	float random = ((float)rand()) / (float)RAND_MAX;
+	//srand(x * 72384 + z * 545871 + seed);
+	//float random = ((float)rand()) / (float)RAND_MAX;
+	float random = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / amplitude));
 	//float difference = 1 - (-1);
 	//difference always 2
-	float r = random * 2;
+	float r = random * 0.3f;
 	
 	return -1 + r;
 }

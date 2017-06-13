@@ -96,14 +96,14 @@ void main(){
 
 		vec3 totalColor = (ambient + diffuse + specular + rim);
 	    //Fog
-        float d = distance(worldPos.xyz, cameraPos);
-        float lerp = (d - 5.0f)/40.0f;
-        lerp = clamp(lerp, 0.0f, 1.0f);
-
-        vec4 fogColor = vec4(0.5f, 0.5f, 0.5f, 1.0f);
-
+//        float d = distance(worldPos.xyz, cameraPos);
+//        float lerp = (d - 5.0f)/40.0f;
+//        lerp = clamp(lerp, 0.0f, 1.0f);
+//
+//        vec4 fogColor = vec4(0.5f, 0.5f, 0.5f, 1.0f);
+//
 		color = vec4(totalColor, 1.0f) * vTexColor;
-		
-        color = mix(color, fogColor,lerp);
+//		
+//        color = mix(color, fogColor,lerp);
 		//color =  vTexColor;
 }
