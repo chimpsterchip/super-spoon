@@ -1,0 +1,43 @@
+#version 430 core
+
+uniform float dist;
+
+layout(vertices = 4) out;
+
+void main(){
+
+        if(gl_InvocationID==0)
+		{
+		if(dist > 20)
+		{
+			gl_TessLevelInner[0] = 2.0;
+			gl_TessLevelInner[1] = 2.0;
+
+			gl_TessLevelOuter[0] = 1.0;
+			gl_TessLevelOuter[1] = 1.0;
+			gl_TessLevelOuter[2] = 1.0;
+			gl_TessLevelOuter[3] = 1.0;
+		}
+		else if(dist > 10)
+		{
+			gl_TessLevelInner[0] = 4.0;
+			gl_TessLevelInner[1] = 4.0;
+
+			gl_TessLevelOuter[0] = 2.0;
+			gl_TessLevelOuter[1] = 2.0;
+			gl_TessLevelOuter[2] = 2.0;
+			gl_TessLevelOuter[3] = 2.0;
+		}
+		else if(dist < 10)
+		{
+			gl_TessLevelInner[0] = 8.0;
+			gl_TessLevelInner[1] = 8.0;
+
+			gl_TessLevelOuter[0] = 4.0;
+			gl_TessLevelOuter[1] = 4.0;
+			gl_TessLevelOuter[2] = 4.0;
+			gl_TessLevelOuter[3] = 4.0;
+		}
+		}
+		gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
+}
