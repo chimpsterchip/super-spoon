@@ -1,15 +1,18 @@
 #include "Terrain.h"
 #include "Light.h"
 #include "Camera.h"
+#include "HeightGenerator.h"
+
 
 #include <fstream>
 
-CTerrain::CTerrain(std::wstring heightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light){
+CTerrain::CTerrain(std::wstring heightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light, HeightGenerator hGenerator){
 
 	this->heightmapFilename = heightmapFilename;
 	this->program = program;
 	this->camera = camera;
 	this->light = light;
+	this->heightGenerator = hGenerator;
 	this->texFileName = texFileName;
 	this->texFileName1 = texFileName1;
 	this->texFileName2 = texFileName2;

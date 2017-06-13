@@ -1,17 +1,21 @@
 #pragma once
 #include "Utils.h"
+//#include "HeightGenerator.h"
 
 class CLight;
 class CCamera;
+class HeightGenerator;
 
 class CTerrain
 {
 public:
-	CTerrain(std::wstring HeightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light);
+	CTerrain(std::wstring HeightmapFilename, std::string texFileName, std::string texFileName1, std::string texFileName2, GLuint program, CCamera* camera, CLight* light, HeightGenerator hGenerator);
 	~CTerrain();
 	
 	CLight* light;
 	CCamera* camera;
+	HeightGenerator* heightGenerator;
+
 	std::string texFileName;
 	std::string texFileName1;
 	std::string texFileName2;

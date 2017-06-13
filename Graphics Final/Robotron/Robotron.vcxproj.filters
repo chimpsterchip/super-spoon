@@ -69,6 +69,9 @@
     <ClInclude Include="TessModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HeightGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Coord_System_Texture_Quad.fs">
@@ -173,6 +176,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TessModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeightGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
