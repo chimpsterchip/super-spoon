@@ -108,6 +108,8 @@
     <None Include="Basic.vs" />
     <None Include="text.frag" />
     <None Include="text.vert" />
+    <None Include="ToonShader.fs" />
+    <None Include="ToonShader.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
