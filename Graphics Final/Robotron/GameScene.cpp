@@ -60,6 +60,7 @@ void GameScene::Init(HWND _name)
 	GLuint TerrainProgram;
 	GLuint GeometryProgram;
 	GLuint TessProgram;
+	GLuint ToonProgram;
 	ShaderLoader shaderLoader;
 	SkyboxProgram = shaderLoader.CreateProgram("Skybox_Shader.vs", "Skybox_Shader.fs");
 	ReflectionProgram = shaderLoader.CreateProgram("Reflection_Shader.vs", "Reflection_Shader.fs");
@@ -67,6 +68,7 @@ void GameScene::Init(HWND _name)
 	TerrainProgram = shaderLoader.CreateProgram("heightmap.vs", "heightmap.fs");
 	GeometryProgram = shaderLoader.CreateProgram("Star.vs", "Star.gs", "Star.fs");
 	TessProgram = shaderLoader.CreateProgram("Basic.vs", "Quad.tcs", "Quad.tes", "Basic.fs");
+	ToonProgram = shaderLoader.CreateProgram("ToonShader.vs", "ToonShader.fs");
 
 	WIDTH = 800;
 	HEIGHT = 800;
@@ -106,6 +108,11 @@ void GameScene::Init(HWND _name)
 	m_pTessModel = new TessModel(TessProgram, MainCamera);
 
 	m_pBox = new CPlanet();
+
+	//setup toon model
+	toonModel = new ToonShadedModel(ToonProgram, MainCamera, MainLight, vec3(6.0f, 6.0f, 0.0f));
+	toonModel->init(CUBE, 1.0f);
+	
 
 	//Create model
 	newModel = new CModel(vec3(6.0f, 5.0f, 0.0f), 36, MainCamera);
@@ -160,6 +167,8 @@ void GameScene::render()
 	if(m_bCull) glDisable(GL_CULL_FACE);
 
 	m_pTessModel->render();
+
+	toonModel->render();
 
 	/*m_p3DCastle->Draw();
 	m_p3DCastle->setPosition(vec3(0.0f, 5.95f, 0.0f));

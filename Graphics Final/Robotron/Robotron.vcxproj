@@ -13,12 +13,13 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CEE84973-0E6F-4B75-BABD-17D77089F257}</ProjectGuid>
     <RootNamespace>Robotron</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -86,6 +87,7 @@
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TessModel.h" />
+    <ClInclude Include="ToonShadedModel.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +129,7 @@
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TessModel.cpp" />
     <ClCompile Include="TextLabel.cpp" />
+    <ClCompile Include="ToonShadedModel.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

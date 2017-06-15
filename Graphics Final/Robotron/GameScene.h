@@ -35,6 +35,7 @@
 #include "GeometryModel.h"
 #include "TessModel.h"
 #include "HeightGenerator.h"
+#include "ToonShadedModel.h"
 
 enum Sounds
 {
@@ -50,6 +51,7 @@ enum Sounds
 class CPlayerShip;
 class CEnemy;
 class CLight;
+class ToonShadedModel;
 
 using namespace glm;
 
@@ -93,6 +95,7 @@ private:
 	Model* m_pSuit;
 	GeometryModel* m_pGeoModel;
 	TessModel* m_pTessModel;
+	ToonShadedModel* toonModel;
 
 
 	FMOD::Channel* channel1;
