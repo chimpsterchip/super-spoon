@@ -22,6 +22,10 @@ uniform vec3 viewPosition;
 
 void main()
 {
+    float intensity;
+
+    intensity = dot(lightPosition, NormVec);    
+
     vec4 TextureColor = texture(Texture, TexCoord);
     //Ambient Light
     float ambientStrength = 0.4f;
@@ -41,17 +45,26 @@ void main()
     vec3 specular = spec * lightColor * specularStrength;
     //Blend
 
-    //Fog
-    float d = distance(worldPos.xyz, viewPosition);
-    float lerp = (d - 5.0f)/10.0f;
-    lerp = clamp(lerp, 0.0f, 1.0f);
+    if (intensity > 0.95)
+		color = vec4(1.0,0.5,0.5,1.0);
+	else if (intensity > 0.5)
+		color = vec4(0.6,0.3,0.3,1.0);
+	else if (intensity > 0.25)
+		color = vec4(0.4,0.2,0.2,1.0);
+	else
+		color = vec4(0.2,0.1,0.1,1.0);
 
-    vec4 fogColor = vec4(0.5f, 0.5f, 0.5f, 1.0f);
+    //Fog
+//    float d = distance(worldPos.xyz, viewPosition);
+//    float lerp = (d - 5.0f)/10.0f;
+//    lerp = clamp(lerp, 0.0f, 1.0f);
+//
+//    vec4 fogColor = vec4(0.5f, 0.5f, 0.5f, 1.0f);
     //Final color
     vec3 finalObjectLight = (ambientValue + diffuseLight + specular) * objectColor;
-    color = vec4(finalObjectLight, 1.0f);
+    //color = vec4(finalObjectLight, 1.0f);
 
-    color = mix(color, fogColor,lerp);
+    //color = mix(color, fogColor,lerp);
     //color = texture(Texture, TexCoord);// * vec4(ambientValue, 1.0f);
 
     //vec3 colorTemp = outColor * abs(sin(currentTime));

@@ -62,7 +62,8 @@ void CModel::init(ModelType _eType, float _fModelScale, std::string _sTexturePat
 	m_ModelType = _eType;
 
 	ShaderLoader shaderLoader;
-	program = shaderLoader.CreateProgram("Coord_System_Texture_Quad.vs", "Coord_System_Texture_Quad.fs");//###Change this later###//
+	program = shaderLoader.CreateProgram("Coord_System_Texture_Quad.vs", "Coord_System_Texture_Quad.fs");
+	//program = shaderLoader.CreateProgram("ToonShader.vs", "ToonShader.fs");
 
 	if (!InitDone)
 	{

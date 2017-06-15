@@ -68,7 +68,7 @@ void GameScene::Init(HWND _name)
 	TerrainProgram = shaderLoader.CreateProgram("heightmap.vs", "heightmap.fs");
 	GeometryProgram = shaderLoader.CreateProgram("Star.vs", "Star.gs", "Star.fs");
 	TessProgram = shaderLoader.CreateProgram("Basic.vs", "Quad.tcs", "Quad.tes", "Basic.fs");
-	ToonProgram = shaderLoader.CreateProgram("ToonShader.vs", "ToonShader.fs");
+	ToonProgram = shaderLoader.CreateProgram("Coord_System_Texture_Quad.vs", "Coord_System_Texture_Quad.fs");
 
 	WIDTH = 800;
 	HEIGHT = 800;
@@ -178,8 +178,8 @@ void GameScene::render()
 	m_pSuit->setPosition(vec3(0.0f, 6.0f, 12.0f));
 	m_pSuit->setScale(vec3(0.1f, 0.1f, 0.1f));*/
 
-	/*m_pBox->render();
-
+	m_pBox->render();
+	/*
 	glEnable(GL_STENCIL_TEST);
 	glStencilFunc(GL_ALWAYS, 1, 0xFF);
 	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
@@ -198,9 +198,9 @@ void GameScene::render()
 
 	glDisable(GL_STENCIL_TEST);*/
 
-	m_pTerrain->render();
+	//m_pTerrain->render();
 
-	m_pSkybox->render();
+	//m_pSkybox->render();
 
 	//m_pGeoModel->render();
 
